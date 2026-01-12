@@ -61,6 +61,7 @@ h3{
     max-width: var(--maxwidth);
     background-color: var(--white);
     margin: 0 auto;
+    position: relative;
 }
 
 header{
@@ -115,12 +116,14 @@ nav{
 }
 
 main{
+    #productList{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-left: 1rem;
     padding-right: 1rem;
     gap: 1rem;
+    }
 
     h2{
         width: 100%;
@@ -167,5 +170,26 @@ main{
         img{
             width: 100%;
         }
+    }
+}
+
+/*Handlevogn*/
+#shoppingCart {
+    width: 550px;
+    background-color: var(--black);
+    border-left: 0.5rem solid var(--green);
+    border-bottom: 0.5rem solid var(--green);
+    padding: 1rem;
+    position: absolute;
+    top: 73px;
+    right: 0;
+
+    &.hidden{
+        visibility: hidden;
+    }
+
+    table{
+        width: 100%;
+        color: var(--white);
     }
 }
