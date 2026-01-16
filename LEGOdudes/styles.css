@@ -183,6 +183,10 @@ main{
     position: absolute;
     top: 73px;
     right: 0;
+    
+    p{
+        font-weight: bold;
+    }
 
     &.hidden{
         visibility: hidden;
@@ -191,5 +195,16 @@ main{
     table{
         width: 100%;
         color: var(--white);
+        button{
+            background-color: var(--red);
+            border-radius: 50%;
+            color: var(--white);
+            border: none;
+        }
+    }
+
+    span, p{
+        color: var(--white);
+
     }
 }

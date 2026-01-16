@@ -1,3 +1,5 @@
+
+
 document.getElementById("cartButton").addEventListener("click", function(){
     document.getElementById("shoppingCart").classList.toggle("hidden")
 })
@@ -39,10 +41,11 @@ function showCart(){
     
     cartItems.map(ci => {
         //Hente produktinformasjon
-        let product =  products.find(i => i.prodid === ci.prodid)
+        let product = products.find(i => i.prodid === ci.prodid)
+        
        //SKrive ut HTML
-       cartHTML += `
-            <tr>
+       cartHTML += 
+            `<tr>
                 <td class="title">
                     ${product.title}
                 </td>
@@ -50,20 +53,37 @@ function showCart(){
                     ${product.price},-
                 </td>
                 <td class="quantity">
-                    x${ci.quantity}
+                    x ${ci.quantity}
                 </td>
                 <td class="delete">
-                    <button>
+                    <button onClick="deleteFromCart(${product.prodid})">
                         X
                     </button>
                 </td>
             </tr>`
+    //Summere totalpris
+    totalPrice += product.price * ci.quantity
     })
-    document.getElementById("cartItems").innerHTML = cartHTML
-
     
+    if(cartHTML.length === 0){
+        cartHTML += "<tr><td>Ingen varer i handlevogn.</td></tr>"
+    }
+    
+    //
+    document.getElementById("cartItems").innerHTML = cartHTML
+    document.getElementById("totalShopPrice").innerHTML = totalPrice
+    document.getElementById("itemCounter").innerHTML = cart.length
 }
 
+//Slette fra handlevogn
+function deleteFromCart(prodid){
+    let deleteIndex = cart.indexOf(prodid)
+    if(deleteIndex > -1) {
+        cart.splice(deleteIndex, 1)
+    }
+    //Oppdatere handlevogn-utskrift
+    showCart()
+}
 
 
 //Legg til handlevogn
@@ -71,7 +91,6 @@ function addToCart(prodid){
     console.log("Legg til prdukt med ID: " + prodid)
     cart.push(prodid)
     console.log(cart)
-    document.getElementById("itemCounter").innerHTML = cart.length
 
     //Oppdater handlevogn visning
     showCart()
