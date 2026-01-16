@@ -20,10 +20,59 @@ function fetchProducts(){
 
 fetchProducts()
 
+//Generer handlevogn
+function showCart(){
+    //Unike produkter
+    let uniqueItems = new Set(cart)
+    //"..." betyr å spre ut verider med komma separerte verdier
+    let uniqueArray = [...uniqueItems]
+    //oversikt over antall per produkt
+    let cartItems = []
+    uniqueArray.map(item => {
+
+        cartItems.push({prodid: item, quantity: cart.filter(i => i === item).length})
+
+    })
+    //Gå gjennom cartItems for å lage HTML til handlekurven og renge ut totalpris
+    let cartHTML = ""
+    let totalPrice = 0 
+    
+    cartItems.map(ci => {
+        //Hente produktinformasjon
+        let product =  products.find(i => i.prodid === ci.prodid)
+       //SKrive ut HTML
+       cartHTML += `
+            <tr>
+                <td class="title">
+                    ${product.title}
+                </td>
+                <td class="price">
+                    ${product.price},-
+                </td>
+                <td class="quantity">
+                    x${ci.quantity}
+                </td>
+                <td class="delete">
+                    <button>
+                        X
+                    </button>
+                </td>
+            </tr>`
+    })
+    document.getElementById("cartItems").innerHTML = cartHTML
+
+    
+}
+
+
+
 //Legg til handlevogn
 function addToCart(prodid){
     console.log("Legg til prdukt med ID: " + prodid)
     cart.push(prodid)
     console.log(cart)
     document.getElementById("itemCounter").innerHTML = cart.length
+
+    //Oppdater handlevogn visning
+    showCart()
 }
