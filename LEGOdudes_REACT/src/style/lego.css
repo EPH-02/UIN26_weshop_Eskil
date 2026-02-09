@@ -1,62 +1,57 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
-    --red: #DA291C;
+    --red: #da291c;
     --yellow: #ffd700;
-    --blue: #006DB7;
+    --blue: #006db7;
     --green: #00af4d;
-    --white: #ffffff;
-    --black: #000000;
+    --white: #fff;
+    --black: #000;
 
     --rootsize: 20px;
     --maxwidth: 1200px;
 }
-body, html{
+body, html {
     margin: 0;
     padding: 0;
 }
 body {
-    font-family: "Rubik", sans-serif;
+    font-family: 'Rubik', sans-serif;
     background-color: var(--yellow);
     background-image: url(website_images/mainbackground.png);
 }
 
-p{
-    font-size:1rem;
+p {
+    font-size: 1rem;
 }
-
-h1{
-    margin:0 ;
-    padding: 0 ;
+h1 {
+    margin: 0;
+    padding: 0;
     max-width: 250px;
+    width: 100%;
 
-    a{
+    a {
         display: inline-block;
         width: 100%;
         overflow: hidden;
 
-        img{
+        img {
             width: 100%;
             height: auto;
         }
     }
 }
-
-h2{
+h2 {
     font-size: 2.5rem;
     font-weight: 900;
 }
-
-h3{
+h3 {
     font-size: 1.5rem;
     font-weight: 600;
 }
 
 /* HOVEDOMRÅDE */
-
-#container{
+#container {
     width: 100%;
     max-width: var(--maxwidth);
     background-color: var(--white);
@@ -64,22 +59,21 @@ h3{
     position: relative;
 }
 
-header{
+header {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#cartButton{
+#cart-button {
     width: 70px;
     background: transparent;
     border: none;
     position: relative;
 
-
-    div{
-        background-color: var(--red);
+    div {
+        background: var(--red);
         width: 30px;
         height: 30px;
         border-radius: 50%;
@@ -93,118 +87,98 @@ header{
     }
 }
 
-nav{
+nav {
     background: var(--red);
     color: var(--white);
 
-   
-    a{
+    a {
         display: inline-block;
         padding: 1rem;
         text-transform: uppercase;
         color: var(--white);
         text-decoration: none;
+        
 
-
-        &:hover{
-            background:var(--yellow);
+        &:hover {
+            background: var(--yellow);
             color: var(--black);
             box-shadow: inset 0 -5px 0 var(--black);
-            
         }
     }
 }
 
-main{
-    #productList{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    gap: 1rem;
+main {
+    #product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        gap: 1rem;
     }
 
-    h2{
+    h2 {
         width: 100%;
-        font-size: 2.5rem;
         text-align: center;
         text-transform: uppercase;
-        
-        
     }
 
-    .productCard{
+    .product-card {
         max-width: calc(33% - 2rem);
-        background-color: var(--black);
+        background: var(--black);
         color: var(--white);
         padding: 1rem;
         box-sizing: border-box;
         border-bottom: 1rem solid var(--green);
         margin-bottom: 1rem;
 
-        a{
+        a {
             color: var(--yellow);
             text-decoration: none;
         }
 
-        h3{
+        h3 {
             margin: 0;
             text-transform: uppercase;
         }
-
-        p{
+        
+        p {
             margin: 0;
             margin-bottom: 5px;
-            font-size: 1rem;
         }
 
-        button{
+        button {
             background: var(--green);
             color: var(--white);
             font-family: "Rubik", sans-serif;
             font-size: 1rem;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
         }
 
-        img{
+        img {
             width: 100%;
         }
     }
 }
 
-/*Handlevogn*/
-#shoppingCart {
+/* HANDLEVOGN */
+#cart {
     width: 550px;
-    background-color: var(--black);
+    background: var(--black);
+    color: var(--white);
     border-left: 0.5rem solid var(--green);
     border-bottom: 0.5rem solid var(--green);
     padding: 1rem;
     position: absolute;
-    top: 73px;
+    top: 74px;
     right: 0;
-    
-    p{
-        font-weight: bold;
-    }
 
-    &.hidden{
+    &.hidden {
         visibility: hidden;
     }
 
-    table{
+    table {
         width: 100%;
         color: var(--white);
-        button{
-            background-color: var(--red);
-            border-radius: 50%;
-            color: var(--white);
-            border: none;
-        }
-    }
-
-    span, p{
-        color: var(--white);
-
     }
 }
