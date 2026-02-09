@@ -70,7 +70,7 @@ export default function ProductCard({p, setCart}){
     return (
       <article className="product-card">
           <img src={`website_images/PROD_${p.imagefile}`} alt={p.title} />
-          <a href="#">${p.category}</a>
+          <a href="#">{p.category}</a>
           <h3>{p.title}</h3>
           <p>Kr. {p.price},-</p>
           <button onClick={handleClick}>Legg til handlevogn</button>

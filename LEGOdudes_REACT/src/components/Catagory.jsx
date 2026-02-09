@@ -1,5 +1,5 @@
 
 
-export default function CategoryTitle(){
-    return (<h2>Ninjago</h2>)
+export default function CategoryTitle({title}){
+    return (<h2>{title}</h2>)
   }

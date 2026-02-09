@@ -50,7 +50,7 @@ export default function CartItem({p, setCart}){
     return (
       <tr>
         <td className="title">{p.title}</td>
-        <td className="price">{p.price}kr</td>
+        <td className="price">{p.price} kr</td>
         <td className="quantity">{p.quantity}</td>
         <td className="delete"><button onClick={()=>removeFromCart(p.prodid)}>X</button></td>
       </tr>

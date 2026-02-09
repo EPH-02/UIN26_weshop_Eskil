@@ -7,6 +7,8 @@ import Products from './components/Products'
 import CategoryTitle from './components/Catagory'
 import Header from './components/Header'
 import Nav from './components/Nav'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
 
 function App() {
 
@@ -50,16 +52,26 @@ function App() {
     setTotalSum(total)
   }, [cart]);
 
-  return (
-    <div id="container">
-      <Header setIsOpen={setIsOpen} cartQuantity={cartQuantity} />
-      <Nav />
+function Page(){
+  return(
       <main>
         <CategoryTitle />
         <Products products={products} setCart={setCart} />
       </main>
-      <Cart isOpen={isOpen} cart={cart} setCart={setCart} totalSum={totalSum} />
-    </div>
+  )
+}
+
+  return (
+    <Layout setIsOpen={setIsOpen} cartQunatity={cartQuantity} isOpen={isOpen} cart={cart} setCart={setCart} totalSum={totalSum}>
+      <Routes>
+        <Route index element={<Page/>} />
+        <Route path='city' element={<CategoryTitle title="City"/>}></Route>
+        <Route path='ninjago' element={<CategoryTitle title="Ninjago"/>}></Route>
+        <Route path='castles_and_knights' element={<CategoryTitle title="Castles & Knights"/>}></Route>
+        <Route path='marines_and_pirates' element={<CategoryTitle title="Marines & Pirates"/>}></Route>
+        <Route path='movie_characters' element={<CategoryTitle title="Movie Characters"/>}></Route>
+      </Routes>
+    </Layout>
   )
 }
 
