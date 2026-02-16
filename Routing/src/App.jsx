@@ -7,10 +7,12 @@ import About from './components/About'
 import Layout from './components/Layout'
 import Category from './components/Category'
 import CategoryLayout from './components/CategoryLayout'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 function App() {
- 
+
 
   return (
     
@@ -25,7 +27,6 @@ function App() {
       </Routes>
     </Layout>
   )
-
 }
 
 export default App

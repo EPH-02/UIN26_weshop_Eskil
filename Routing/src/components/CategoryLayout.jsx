@@ -1,16 +1,30 @@
 import { Link, Outlet } from "react-router-dom"
+import { useState } from "react"
+import { useEffect } from "react"
 
 
 export default function CategoryLayout () {
+    
+    const [apiData, setApiData] = useState([])
+    const[apiEndpoint, setApiEndpoint] = useState()
+    
+    const getData = async()=>{
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10')
+        const data = await response.json()
+        setApiData(data.results)
+  }
+
+  console.log(apiData)
+  console.log(apiEndpoint)
+
+  useEffect(()=>{
+    getData()
+  },[])
+    
     return (
         <>
-            <nav>
-                <Link to="sko">Sko</Link>
-                <Link to="bukse">Bukser</Link>
-                <Link to="skjorte">Skjorter</Link>
-                <Link to="lue">Luer</Link>
-                <Link to="vest">Vest</Link>
-                <Link to="belter">Belter</Link>
+            <nav className='mainNav'>
+               {apiData?.map((item) => <Link key={item.name + '-xt'} to={item.name} onClick={()=> setApiEndpoint(item.url)}>{item.name}</Link>)}
             </nav>
             <Outlet />    
         </>
