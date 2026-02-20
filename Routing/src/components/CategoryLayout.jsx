@@ -1,32 +1,39 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useParams } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
 
 
 export default function CategoryLayout () {
     
+    const {slug} = useParams()
     const [apiData, setApiData] = useState([])
     const[apiEndpoint, setApiEndpoint] = useState()
+
+    const defaultApiUrl = 'https://pokeapi.co/api/v2/'
     
     const getData = async()=>{
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10')
+        const response = await fetch(defaultApiUrl)
         const data = await response.json()
-        setApiData(data.results)
+
+        const {type, pokemon, region, item} = data 
+        setApiData({type, pokemon, region, item})
+        
   }
 
-  console.log(apiData)
-  console.log(apiEndpoint)
+  console.log("Sjekk", apiData)
+  console.log("Denne kommer fra Layout", apiEndpoint)
 
   useEffect(()=>{
     getData()
-  },[])
+  },[slug])
     
     return (
         <>
             <nav className='mainNav'>
-               {apiData?.map((item) => <Link key={item.name + '-xt'} to={item.name} onClick={()=> setApiEndpoint(item.url)}>{item.name}</Link>)}
+                {Object.keys(apiData)?.map((item) => <Link key={item+ '-xc'}to={item} onClick={()=>setApiEndpoint(defaultApiUrl + item)}>{item}</Link>)}
+               {/*apiData?.map((item) => <Link key={item.name + '-xt'} to={item.name} onClick={()=> setApiEndpoint(item.url)}>{item.name}</Link>)*/}
             </nav>
-            <Outlet />    
+            <Outlet context={{apiEndpoint, defaultApiUrl}} />    
         </>
     )
 }
