@@ -33,7 +33,7 @@ export default function CategoryLayout () {
                 {Object.keys(apiData)?.map((item) => <Link key={item+ '-xc'}to={item} onClick={()=>setApiEndpoint(defaultApiUrl + item)}>{item}</Link>)}
                {/*apiData?.map((item) => <Link key={item.name + '-xt'} to={item.name} onClick={()=> setApiEndpoint(item.url)}>{item.name}</Link>)*/}
             </nav>
-            <Outlet context={{apiEndpoint, defaultApiUrl}} />    
+            <Outlet context={{apiEndpoint, defaultApiUrl, setApiEndpoint}} />    
         </>
     )
 }
