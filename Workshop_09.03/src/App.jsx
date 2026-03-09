@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Characters from './pages/Characters'
 import Character from './pages/Character'
+import Layout from './components/Layout'
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const apiUrl = "https://rickandmortyapi.com/api/character"
   return (
-  
+      <Layout>
         <Routes>
           <Route index element={<Home />} />
           <Route path='/characters' element={<Characters />} />
           <Route path='/characters/:id' element={<Character />} />
         </Routes>
-    
+    </Layout>
   )
 }
 
 export default App
+
+
+
