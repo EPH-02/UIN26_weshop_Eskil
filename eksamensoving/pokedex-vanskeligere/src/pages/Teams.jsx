@@ -1,6 +1,9 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import TeamCard from "../components/TeamCard"
 
 export default function Teams(){
+    const [storedTeams, setStoredTeams] = useState([])
+
     const teams = [
         {
             name: "Instinct",
@@ -22,27 +25,35 @@ export default function Teams(){
             }, {
                 name: "Psyduck",
                 id: 54
-            }]  
+            }]   
         },
         {
             name: "Valor",
-            color: "red",
+            color: "red", 
             pokemons: [{
                 name: "Charmander",
                 id: 4
             }, {
                 name: "Bulbasaur",
                 id: 1
-            }]    
+            }]     
         }
     ]
 
     useEffect(()=>{
         localStorage.setItem('teams', JSON.stringify(teams))
+        setStoredTeams(JSON.parse(localStorage.getItem('teams')) ?? [])
     },[])
-    
-    //TODO:Hent ut alle lagene og vis de som ulike kort, se skisse for referanse. 
-    //TODO: Lag lagkortene som komponenter, pass på å bruk bildene baser på navn verdien dere henter fra lagene. (Se typekortene for referanse)
 
-    return(<h1>Teams</h1>)
+    return(
+        <main>
+            <section className="flex">
+            <h1>Teams</h1>
+            {storedTeams?.map((team) => (
+                <TeamCard key={team.name} team={team} />
+            ))}
+        </section>
+        </main>
+        
+    )
 }

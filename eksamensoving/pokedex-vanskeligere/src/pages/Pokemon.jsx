@@ -11,7 +11,7 @@ export default function Pokemon(){
         const data = await response.json()
         setPokemonInfo(data)
         console.log(data)
-       // console.log(pokemonData)
+       console.log(pokemonData)
     }
     useEffect(()=>{
         getPokemon()
